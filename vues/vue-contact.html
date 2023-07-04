@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Jeu de Dé</title>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="floating-container">
+                <div class="floating-button">+</div>
+                <div class="element-container">
+
+                    <a href="google.com"> <span class="float-element tooltip-left">
+                    <i class="material-icons">phone
+                    </i></a>
+                  </span>
+                        <span class="float-element">
+                    <i class="material-icons">email
+              </i>
+                  </span>
+                        <span class="float-element">
+                    <i class="material-icons">chat</i>
+                  </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <section>
+            <div class="contact">
+                <div class="gauche"> </div>
+                <div class="droite">
+                    <h2>Nous Contacter</h2>
+                    <form id="contactForm" onsubmit="validateForm(event)">
+
+                        <div class="container_contact">
+                            <p>Besoin d’aide ? Vous vous voulez nous aider à améliorer notre site ? N’hésiter pas à nous envoyer un message </p>
+
+
+                            <div class="name_card">
+                                <label for="nom">Nom :</label>
+                                <input type="text" id="nom" name="nom" required>
+
+                                <label for="prenom">Prénom :</label>
+                                <input type="text" id="nom" name="nom" required>
+                            </div>
+
+                            <div class="content_card">
+                                <label for="email">Email :</label>
+                                <input type="email" id="email" name="email" required>
+
+                                <label for="sujet">Sujet :</label>
+                                <input type="text" id="sujet" name="sujet" required>
+
+                                <label for="message">Message :</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+
+                    </form>
+
+                    </div>
+                    <br>
+                    <button type="submit">Envoyer</button>
+                </div>
+
+        </section>
+    </main>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <footer>
+        <p> Copyright by Stella </p>
+    </footer>
+</body>
+
+</html>
