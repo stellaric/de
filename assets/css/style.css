@@ -3,12 +3,22 @@ html {
     scroll-behavior: smooth;
 }
 
+* {
+    cursor: url('../../src/img/icon/cursor.png'), auto;
+}
+
 body {
     margin: 0;
     padding: 0;
     background-color: black;
     color: white;
 }
+
+
+/*Header*/
+
+
+/*FAB*/
 
 .floating-container {
     position: fixed;
@@ -20,50 +30,37 @@ body {
 }
 
 .floating-container:hover {
-    height: 300px;
+    height: 200px;
 }
 
 .floating-container:hover .floating-button {
     box-shadow: 0 10px 25px rgba(44, 179, 240, 0.6);
-    -webkit-transform: translatey(5px);
     transform: translatey(5px);
-    -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
 
 .floating-container:hover .element-container .float-element:nth-child(1) {
-    -webkit-animation: come-in 0.4s forwards 0.2s;
     animation: come-in 0.4s forwards 0.2s;
 }
 
 .floating-container:hover .element-container .float-element:nth-child(2) {
-    -webkit-animation: come-in 0.4s forwards 0.4s;
     animation: come-in 0.4s forwards 0.4s;
-}
-
-.floating-container:hover .element-container .float-element:nth-child(3) {
-    -webkit-animation: come-in 0.4s forwards 0.6s;
-    animation: come-in 0.4s forwards 0.6s;
 }
 
 .floating-container .floating-button {
     position: absolute;
     width: 65px;
     height: 65px;
-    background: #2cb3f0;
+    background: #d28ee4;
     bottom: 0;
     border-radius: 50%;
-    left: 0;
-    right: 0;
-    margin: auto;
-    color: white;
     line-height: 65px;
     text-align: center;
     font-size: 23px;
     z-index: 100;
-    box-shadow: 0 10px 25px -5px rgba(44, 179, 240, 0.6);
+    box-shadow: 0 10px 25px -5px rgba(106, 29, 194, 0.6);
     cursor: pointer;
-    -webkit-transition: all 0.3s;
+    margin-left: 35px;
     transition: all 0.3s;
 }
 
@@ -73,14 +70,13 @@ body {
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    margin: 15px auto;
+    margin: 10px auto;
     color: white;
     font-weight: 500;
     text-align: center;
     line-height: 50px;
-    z-index: 0;
     opacity: 0;
-    -webkit-transform: translateY(100px);
+    z-index: 0;
     transform: translateY(100px);
 }
 
@@ -95,13 +91,8 @@ body {
 }
 
 .floating-container .float-element:nth-child(2) {
-    background: #4CAF50;
-    box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
-}
-
-.floating-container .float-element:nth-child(3) {
-    background: #FF9800;
-    box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
+    background: #ca44d6;
+    box-shadow: 0 20px 20px -10px rgba(175, 76, 175, 0.5);
 }
 
 @keyframes come-in {
@@ -125,6 +116,15 @@ body {
     }
 }
 
+
+/**/
+
+
+/*Main*/
+
+
+/*section video + regle */
+
 .section_regle {
     display: flex;
     flex-direction: row;
@@ -132,14 +132,22 @@ body {
     width: 100%;
 }
 
+
+/*partie gauche*/
+
 .gauche {
     height: 960px;
     width: 50%;
-    background: url('../../src/img/fd_header.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 }
+
+video#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/*partie droite*/
 
 .droite {
     height: 960px;
@@ -181,6 +189,18 @@ body {
     font-family: Montserrat, sans-serif;
 }
 
+
+/**/
+
+
+/*vue-plateau*/
+
+
+/* section plateau : */
+
+
+/**/
+
 .section_plateau {
     display: flex;
     flex-direction: row;
@@ -191,14 +211,15 @@ body {
 
 .score_tempo {
     background: rgba(0, 0, 0, 0.25);
-    width: 320px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
 
-.score_tempo p {
+.score_tempo p,
+span {
     text-align: center;
     font-size: 35px;
     font-family: Inter;
@@ -224,6 +245,9 @@ body {
     border-radius: 50%;
 }
 
+
+/*joueur 1*/
+
 #player1 {
     background: rgba(194, 100, 191, 0.30);
     width: 40%;
@@ -245,6 +269,9 @@ body {
 #player1.active .score_tempo {
     background-color: #ffffffa2;
 }
+
+
+/* joueur 2*/
 
 #player2 {
     background: #84bbc85c;
@@ -303,11 +330,15 @@ body {
 #globalScore1 {
     color: #d870d3;
     text-shadow: 0 0 6px rgba(194, 100, 191, 0.30), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(194, 100, 191, 0.30), 0 0 21px #d870d3, 0 0 34px #d870d3, 0 0 54px #d870d3;
+    font-size: xx-large;
+    padding: 10px;
 }
 
 #globalScore2 {
     color: #c6e2ff;
     text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78), 0 0 54px rgba(30, 132, 242, 0.92);
+    font-size: xx-large;
+    padding: 10px;
 }
 
 .score img {
@@ -364,6 +395,33 @@ body {
     text-transform: uppercase;
 }
 
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.bounce-animation {
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+
+/*footer*/
+
 footer {
     height: 120px;
     background-color: black;
@@ -376,7 +434,7 @@ footer {
 footer p {
     color: #FFF;
     text-align: center;
-    font-size: 36px;
+    font-size: xx-large;
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
@@ -385,7 +443,7 @@ footer p {
 }
 
 
-/**/
+/*vue-contact*/
 
 .contact {
     display: flex;
@@ -470,4 +528,22 @@ label {
 .content_card {
     display: flex;
     flex-direction: column;
+}
+
+
+/*version mobile */
+
+@media only screen and (max-width: 767px) {
+    /*index.html (accueil)*/
+    .section_regle {
+        flex-direction: column;
+        height: 1920px;
+    }
+    .gauche {
+        width: 100%;
+    }
+    .droite {
+        width: 100%;
+        height: fit-content;
+    }
 }

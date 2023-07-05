@@ -7,7 +7,7 @@ function launchDice() {
     var diceElement = document.querySelector('.score img');
 
     // Mise à jour de l'image du dé en fonction du résultat
-    diceElement.src = 'src/img/dice/de' + diceNumber + '.png';
+    diceElement.src = '../src/img/dice/de' + diceNumber + '.png';
 
     // Si le résultat est différent de 1, on met à jour le score temporaire du joueur actif
     if (diceNumber !== 1) {
@@ -17,7 +17,6 @@ function launchDice() {
         switchPlayer();
     }
 }
-
 
 // Fonction de mise à jour du score temporaire du joueur actif
 function updateRoundScore(diceNumber) {

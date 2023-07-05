@@ -14,19 +14,18 @@
 
     <header>
         <!--header-->
+
         <div class="header">
             <!---FAB (floating button)-->
             <div class="floating-container">
                 <div class="floating-button">+</div>
                 <div class="element-container">
-
                     <span class="float-element">
-                    <i class="material-icons">email
-              </i>
-                  </span>
+            <i class="material-icons">email</i>
+          </span>
                     <span class="float-element">
-                    <i class="material-icons">chat</i>
-                  </span>
+            <i class="material-icons">chat</i>
+          </span>
                 </div>
             </div>
         </div>
@@ -35,82 +34,35 @@
     <!--main-->
 
     <main>
+
         <!--section : regle -->
         <section>
             <div class="section_regle">
                 <div class="gauche">
-
+                    <video id="background-video" autoplay loop muted>
+            <source src="src/video/fd_video.mp4" type="video/mp4">
+          </video>
                 </div>
                 <div class="droite">
-                    <h1>Régle du jeu </h1>
+                    <h1>Régle du jeu</h1>
                     <p>Le jeu comprend 2 joueurs sur un seul et même écran.
-                        <br> <br> Chaque joueur possède un score temporaire (ROUND) et un score global (GLOBAL). A chaque tour, le joueur a son ROUND initialisé à 0 et peut lancer un dé autant de fois qu'il le souhaite.
-                        <br> <br> Le résultat d'un lancer est ajouté au ROUND. Lors de sont tour, le joueur peut décider à tout moment de: Cliquer sur l'option "Hold",qui permet d'envoyer les points du ROUND vers le GLOBAL.
-                        <br> <br> Ce sera alors le tour de l'autre joueur. Lancer le dé.
-                        <br> <br>S'il obtient un 1, son score ROUND est perdu et c'est la fin de son tour. Le premier joueur qui atteint les 100 points sur global gagne le jeu.
+                        <br><br> Chaque joueur possède un score temporaire (ROUND) et un score global (GLOBAL). A chaque tour, le joueur a son ROUND initialisé à 0 et peut lancer un dé autant de fois qu'il le souhaite.
+                        <br><br> Le résultat d'un lancer est ajouté au ROUND. Lors de son tour, le joueur peut décider à tout moment de cliquer sur l'option "Hold", qui permet d'envoyer les points du ROUND vers le GLOBAL.
+                        <br><br> Ce sera alors le tour de l'autre joueur. Lancer le dé.
+                        <br><br> S'il obtient un 1, son score ROUND est perdu et c'est la fin de son tour. Le premier joueur qui atteint les 100 points sur global gagne le jeu.
                     </p>
-                    <button type="submit">Commencer</button>
+                    <form action="vues/vue-plateau.html" method="GET">
+                        <button type="submit">Commencer</button>
+                    </form>
                 </div>
             </div>
         </section>
 
-
-        <section>
-            <div class="section_plateau">
-                <div class="joueur_un active" id="player1">
-
-                    <div class="profil">
-                        <span class="iconify" data-icon="iconamoon:profile-fill" id="icon_profil"></span>
-                        <p>Joueur 1</p>
-                    </div>
-                    <div class="score_tempo">
-                        <p>ROUND :</p>
-                        <span id="roundScore1">0</span>
-                    </div>
-
-                </div>
-
-
-                <div class="score">
-                    <div class="score_globale">
-                        <h2>Score globale </h2>
-                        <div class="scr-gbl_joueur">
-                            <span id="globalScore1">0</span>
-                            <span id="globalScore2">0</span>
-                        </div>
-
-                        <img src="src/img/dice/dé.png" alt="" srcset="">
-                    </div>
-                </div>
-
-                <div class="joueur_deux " id="player2">
-                    <div class="profil">
-                        <span class="iconify" data-icon="iconamoon:profile-fill" id="icon_profil"></span>
-                        <p>Joueur 2</p>
-                    </div>
-                    <div class="score_tempo">
-                        <p>ROUND :</p>
-                        <span id="roundScore2">0</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section>
-            <div class="btn_play">
-                <button type="submit" id="rollBtn" onclick="launchDice()">Lancer <span class="iconify" data-icon="ion:dice" style="color: white; font-size: 45px;margin-bottom: -7px;"></span> </button>
-                <button type="submit" id="holdBtn"> À ton tour ! <span class="iconify" data-icon="octicon:smiley-24" style="color: white; font-size: 45px;margin-bottom: -7px;"></span> </button>
-                <button id="newGameBtn" style="display: none;">New Game</button>
-
-            </div>
-        </section>
     </main>
 
     <footer>
-        <p> Copyright by Stella </p>
+        <p>Copyright by Stella</p>
     </footer>
-
 
     <div class="script">
         <script src="assets/js/script.js"></script>
