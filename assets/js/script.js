@@ -72,6 +72,28 @@ function endGame() {
     var winner = globalScore1 >= 100 ? 'Joueur 1' : 'Joueur 2';
     alert('Le jeu est terminé ! ' + winner + ' a gagné !');
 }
+// Fonction pour démarrer un nouveau jeu
+function startNewGame() {
+    currentPlayer = 1;
+    roundScore = 0;
+    globalScore1 = 0;
+    globalScore2 = 0;
+
+    // Réinitialisation des affichages des scores
+    document.getElementById('roundScore1').textContent = roundScore;
+    document.getElementById('roundScore2').textContent = roundScore;
+    document.getElementById('globalScore1').textContent = globalScore1;
+    document.getElementById('globalScore2').textContent = globalScore2;
+
+    // Réinitialisation des classes actives
+    document.getElementById('player1').classList.add('active');
+    document.getElementById('player2').classList.remove('active');
+
+
+}
+
+// Ajouter l'écouteur d'événement au bouton "Nouveau Jeu"
+document.getElementById('newGameBtn').addEventListener('click', startNewGame);
 
 // Ajout des écouteurs d'événements aux boutons
 document.getElementById('rollBtn').addEventListener('click', launchDice);
