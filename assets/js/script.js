@@ -2,11 +2,16 @@ var currentPlayer = 1;
 var roundScore = 0;
 var globalScore1 = 0;
 var globalScore2 = 0;
-
+var newSound;
+var winner;
+var winSound;
+var diceNumber;
+var diceElement;
+var diceSound;
 // Fonction de lancer de dé
 function launchDice() {
-    var diceNumber = Math.floor(Math.random() * 6) + 1; // Génération d'un nombre aléatoire entre 1 et 6
-    var diceElement = document.querySelector('.score img'); // Sélection de l'élément d'affichage du dé
+    diceNumber = Math.floor(Math.random() * 6) + 1; // Génération d'un nombre aléatoire entre 1 et 6
+    diceElement = document.querySelector('.score img'); // Sélection de l'élément d'affichage du dé
     diceElement.src = '../src/img/dice/de' + diceNumber + '.png'; // Mise à jour de l'image du dé en fonction du résultat
 
     if (diceNumber !== 1) {
@@ -18,7 +23,7 @@ function launchDice() {
         switchPlayer(); // Passage au joueur suivant
     }
     // Jouer le son du dé
-    var diceSound = new Audio('../../src/son/son_dice.mp3');
+    diceSound = new Audio('../../src/son/son_dice.mp3');
     diceSound.play();
 
     // Ajouter la classe "bounce-animation" au dé
@@ -44,34 +49,58 @@ function switchPlayer() {
     // Mise à jour de la classe active pour les profils des joueurs
     document.getElementById('player1').classList.toggle('active');
     document.getElementById('player2').classList.toggle('active');
+
+    // Jouer le son lorsque les joueurs changent
+    var switchSound = new Audio('../../../src/son/son_hold.mp3');
+    switchSound.play();
 }
+
 
 // Fonction pour ajouter le score temporaire au score global
 function hold() {
     if (currentPlayer === 1) {
-        globalScore1 += roundScore; // Ajout du score temporaire au score global du joueur 1
+        globalScore1 += roundScore;
         document.getElementById('globalScore1').textContent = globalScore1;
     } else {
-        globalScore2 += roundScore; // Ajout du score temporaire au score global du joueur 2
+        globalScore2 += roundScore;
         document.getElementById('globalScore2').textContent = globalScore2;
     }
 
+
+
     if (globalScore1 >= 100 || globalScore2 >= 100) {
-        // Vérification si l'un des joueurs a atteint 100 points ou plus
         endGame();
     } else {
-        roundScore = 0; // Réinitialisation du score temporaire à 0
+        roundScore = 0;
         document.getElementById('roundScore' + currentPlayer).textContent = roundScore;
-        switchPlayer(); // Passage au joueur suivant
+        switchPlayer();
     }
+
+    ;
 }
+
+
+
 
 // Fonction pour terminer le jeu
 function endGame() {
     // Afficher un message ou effectuer des actions spécifiques pour la fin du jeu
-    var winner = globalScore1 >= 100 ? 'Joueur 1' : 'Joueur 2';
+    winner = globalScore1 >= 100 ? 'Joueur 1' : 'Joueur 2';
     alert('Le jeu est terminé ! ' + winner + ' a gagné !');
+
+
+    // Désactiver les boutons "Roll" et "Hold"
+    document.getElementById('rollBtn').disabled = true;
+    document.getElementById('holdBtn').disabled = true;
+    // Jouer le son de victoire
+    winSound = document.getElementById("winSound");
+    winSound.play();
+
 }
+
+
+
+
 // Fonction pour démarrer un nouveau jeu
 function startNewGame() {
     currentPlayer = 1;
@@ -88,13 +117,18 @@ function startNewGame() {
     // Réinitialisation des classes actives
     document.getElementById('player1').classList.add('active');
     document.getElementById('player2').classList.remove('active');
-
-
+    newSound = document.getElementById("newSound");
+    newSound.play();
+    document.getElementById('rollBtn').disabled = false;
+    document.getElementById('holdBtn').disabled = false;
 }
 
-// Ajouter l'écouteur d'événement au bouton "Nouveau Jeu"
-document.getElementById('newGameBtn').addEventListener('click', startNewGame);
+
+
+
+
 
 // Ajout des écouteurs d'événements aux boutons
+document.getElementById('newGameBtn').addEventListener('click', startNewGame);
 document.getElementById('rollBtn').addEventListener('click', launchDice);
 document.getElementById('holdBtn').addEventListener('click', hold);

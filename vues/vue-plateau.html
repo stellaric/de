@@ -39,10 +39,11 @@
 
         <div class="main_plateau">
 
+
             <section>
                 <div class="section_plateau">
                     <div class="joueur_un active" id="player1">
-
+                        <div id="confettiContainer"></div>
                         <div class="profil">
                             <span class="iconify" data-icon="iconamoon:profile-fill" id="icon_profil"></span>
                             <p>Joueur 1</p>
@@ -63,12 +64,16 @@
                                 <span id="globalScore2">0</span>
                             </div>
                             <button id="newGameBtn" onclick="startNewGame()">New</button>
+                            <audio id="newSound">
+                                <source src="../src/son/son_new.mp3" type="audio/mp3">
+                            </audio>
 
                             <img src="../src/img/dice/de1.png" alt="" srcset="" id="dice">
                         </div>
                     </div>
 
                     <div class="joueur_deux " id="player2">
+                        <div id="confettiContainer"></div>
                         <div class="profil">
                             <span class="iconify" data-icon="iconamoon:profile-fill" id="icon_profil"></span>
                             <p>Joueur 2</p>
@@ -80,17 +85,15 @@
                     </div>
                 </div>
 
-                <div class="popup">
 
-                </div>
 
             </section>
 
 
             <section>
                 <div class="btn_play">
-                    <button type="submit" id="rollBtn">Roll <span class="iconify" data-icon="ion:dice" style="color: white; font-size: 45px;margin-bottom: -7px;"></span> </button>
-                    <button type="submit" id="holdBtn"> Hold <span class="iconify" data-icon="octicon:smiley-24" style="color: white; font-size: 45px;margin-bottom: -7px;"></span> </button>
+                    <button type="submit" id="rollBtn">Roll <span class="iconify" data-icon="ion:dice" ></span> </button>
+                    <button type="submit" id="holdBtn"> Hold <span class="iconify" data-icon="bi:save"></span> </button>
 
 
                 </div>
@@ -105,11 +108,17 @@
         <!-- Pied de page -->
         <p>© 2023 Stella. Tous droits réservés.</p>
     </footer>
+    <audio id="winSound">
+        <source src="../src/son/son_gagne.mp3" type="audio/mp3">
+    </audio>
+    <div id="confettiContainer"></div>
 
 
     <div class="script">
-        <script src="../assets/js/script.js"></script>
+
         <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.10.1/tsparticles.confetti.bundle.min.js"></script>
+        <script src="../assets/js/script.js"></script>
     </div>
 </body>
 
