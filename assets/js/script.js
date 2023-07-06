@@ -1,56 +1,78 @@
+var currentPlayer = 1;
+var roundScore = 0;
+var globalScore1 = 0;
+var globalScore2 = 0;
+
 // Fonction de lancer de dé
 function launchDice() {
-    // Génération d'un nombre aléatoire entre 1 et 6
-    var diceNumber = Math.floor(Math.random() * 6) + 1;
+    var diceNumber = Math.floor(Math.random() * 6) + 1; // Génération d'un nombre aléatoire entre 1 et 6
+    var diceElement = document.querySelector('.score img'); // Sélection de l'élément d'affichage du dé
+    diceElement.src = '../src/img/dice/de' + diceNumber + '.png'; // Mise à jour de l'image du dé en fonction du résultat
 
-    // Sélection de l'élément d'affichage du dé
-    var diceElement = document.querySelector('.score img');
-
-    // Mise à jour de l'image du dé en fonction du résultat
-    diceElement.src = '../src/img/dice/de' + diceNumber + '.png';
-
-    // Si le résultat est différent de 1, on met à jour le score temporaire du joueur actif
     if (diceNumber !== 1) {
-        updateRoundScore(diceNumber);
+        roundScore += diceNumber; // Ajout du résultat du lancer de dé au score temporaire
+        document.getElementById('roundScore' + currentPlayer).textContent = roundScore;
     } else {
-        // Sinon, on passe au joueur suivant
-        switchPlayer();
+        roundScore = 0; // Réinitialisation du score temporaire à 0
+        document.getElementById('roundScore' + currentPlayer).textContent = roundScore;
+        switchPlayer(); // Passage au joueur suivant
     }
+    // Jouer le son du dé
+    var diceSound = new Audio('../../src/son/son_dice.mp3');
+    diceSound.play();
+
+    // Ajouter la classe "bounce-animation" au dé
+    diceElement.classList.add('bounce-animation');
+
+    // Supprimer la classe "bounce-animation" après un court délai
+    setTimeout(function() {
+        diceElement.classList.remove('bounce-animation');
+    }, 500); // Durée de l'animation en millisecondes
 }
 
-// Fonction de mise à jour du score temporaire du joueur actif
-function updateRoundScore(diceNumber) {
-    // Sélection de l'élément d'affichage du score temporaire du joueur actif
-    var roundScoreElement = document.querySelector('.joueur_un.active #roundScore1');
-
-    // Récupération du score temporaire actuel du joueur actif
-    var roundScore = parseInt(roundScoreElement.textContent);
-
-    // Mise à jour du score temporaire en ajoutant le résultat du lancer de dé
-    roundScore += diceNumber;
-
-    // Mise à jour de l'affichage du score temporaire
-    roundScoreElement.textContent = roundScore;
-}
-
-// Fonction de passage au joueur suivant
+// Fonction pour passer au joueur suivant
 function switchPlayer() {
-    // Sélection des éléments des joueurs
-    var player1Element = document.querySelector('.joueur_un');
-    var player2Element = document.querySelector('.joueur_deux');
+    roundScore = 0; // Réinitialisation du score temporaire à 0
 
-    // Vérification du joueur actif
-    if (player1Element.classList.contains('active')) {
-        // Si le joueur 1 est actif, on le désactive et active le joueur 2
-        player1Element.classList.remove('active');
-        player2Element.classList.add('active');
+    // Mise à jour de l'affichage du score temporaire pour les deux joueurs
+    document.getElementById('roundScore1').textContent = roundScore;
+    document.getElementById('roundScore2').textContent = roundScore;
+
+    // Passage au joueur suivant
+    currentPlayer = currentPlayer === 1 ? 2 : 1;
+
+    // Mise à jour de la classe active pour les profils des joueurs
+    document.getElementById('player1').classList.toggle('active');
+    document.getElementById('player2').classList.toggle('active');
+}
+
+// Fonction pour ajouter le score temporaire au score global
+function hold() {
+    if (currentPlayer === 1) {
+        globalScore1 += roundScore; // Ajout du score temporaire au score global du joueur 1
+        document.getElementById('globalScore1').textContent = globalScore1;
     } else {
-        // Sinon, on désactive le joueur 2 et active le joueur 1
-        player2Element.classList.remove('active');
-        player1Element.classList.add('active');
+        globalScore2 += roundScore; // Ajout du score temporaire au score global du joueur 2
+        document.getElementById('globalScore2').textContent = globalScore2;
     }
+
+    if (globalScore1 >= 100 || globalScore2 >= 100) {
+        // Vérification si l'un des joueurs a atteint 100 points ou plus
+        endGame();
+    } else {
+        roundScore = 0; // Réinitialisation du score temporaire à 0
+        document.getElementById('roundScore' + currentPlayer).textContent = roundScore;
+        switchPlayer(); // Passage au joueur suivant
+    }
+}
+
+// Fonction pour terminer le jeu
+function endGame() {
+    // Afficher un message ou effectuer des actions spécifiques pour la fin du jeu
+    var winner = globalScore1 >= 100 ? 'Joueur 1' : 'Joueur 2';
+    alert('Le jeu est terminé ! ' + winner + ' a gagné !');
 }
 
 // Ajout des écouteurs d'événements aux boutons
 document.getElementById('rollBtn').addEventListener('click', launchDice);
-document.getElementById('holdBtn').addEventListener('click', switchPlayer);
+document.getElementById('holdBtn').addEventListener('click', hold);

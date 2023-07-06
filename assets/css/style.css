@@ -59,7 +59,7 @@ body {
     font-size: 23px;
     z-index: 100;
     box-shadow: 0 10px 25px -5px rgba(106, 29, 194, 0.6);
-    cursor: pointer;
+    cursor: url('../../src/img/icon/cursor.png'), pointer;
     margin-left: 35px;
     transition: all 0.3s;
 }
@@ -313,6 +313,7 @@ span {
 
 .score_globale h2 {
     font-family: 'Inter';
+    text-align: center;
     text-transform: uppercase;
 }
 
@@ -347,6 +348,36 @@ span {
     flex-shrink: 0;
     border: 1px solid #fff;
     box-shadow: -1px 0px 13px 3px #fff;
+}
+
+.bounce-animation {
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+.dice {
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .un {
@@ -395,30 +426,6 @@ span {
     text-transform: uppercase;
 }
 
-@keyframes bounce {
-    0% {
-        transform: translateY(0);
-    }
-    25% {
-        transform: translateY(-20px);
-    }
-    50% {
-        transform: translateY(0);
-    }
-    75% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.bounce-animation {
-    animation-name: bounce;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in-out;
-}
-
 
 /*footer*/
 
@@ -452,7 +459,12 @@ footer p {
     align-items: center;
 }
 
-.droite h2 {
+.gauche_contact {
+    height: 960px;
+    width: 50%;
+}
+
+.droite_contact h2 {
     display: block;
     margin-top: -0.5rem;
     font-size: 2.1rem;
@@ -501,6 +513,46 @@ footer p {
     }
 }
 
+.droite_contact {
+    height: 960px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.droite_contact p {
+    text-align: center;
+    font-size: 21px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 69%
+}
+
+.droite_contact button {
+    padding: 30px;
+    width: 230px;
+    background-color: black;
+    color: white;
+    border: 4px solid #fff;
+    border-radius: 12px;
+    font-size: x-large;
+    font-family: Montserrat, sans-serif;
+}
+
+input#email,
+input#sujet {
+    width: 520px;
+    height: 30px;
+}
+
+textarea#message {
+    height: 120px;
+}
+
 .container_contact {
     display: flex;
     flex-direction: column;
@@ -509,6 +561,7 @@ footer p {
     width: 550px;
     padding: 12px;
     align-items: center;
+    box-shadow: 1px 1px 9px 3px white;
 }
 
 form#contactForm {
@@ -534,16 +587,128 @@ label {
 /*version mobile */
 
 @media only screen and (max-width: 767px) {
+    /*general*/
+    footer {
+        height: 160px;
+    }
+    footer p {
+        text-align: center;
+        ;
+        font-size: x-large;
+    }
     /*index.html (accueil)*/
     .section_regle {
         flex-direction: column;
-        height: 1920px;
+        height: 1070px;
     }
     .gauche {
         width: 100%;
+        height: 360px;
     }
     .droite {
         width: 100%;
         height: fit-content;
+    }
+    .droite h1 {
+        font-size: 35px;
+    }
+    .droite p,
+    .droite_contact p {
+        font-size: 17px;
+        width: 77%
+    }
+    .droite button {
+        padding: 20px;
+    }
+    /*vue-plateau .html*/
+    .section_plateau {
+        flex-direction: column;
+        height: auto;
+    }
+    #player1 {
+        width: 100%;
+        flex-direction: row;
+    }
+    svg#icon_profil {
+        height: 120px;
+        width: 120px;
+        margin: 10px;
+    }
+    .profil {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .profil p {
+        font-size: medium;
+    }
+    .score {
+        width: 100%;
+    }
+    .score img {
+        width: 120px;
+        height: 120px;
+    }
+    .score_globale {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 8px;
+        height: 140px;
+    }
+    .score_globale h2 {
+        font-size: 12px;
+    }
+    .scr-gbl_joueur {
+        flex-direction: column;
+    }
+    #player2 {
+        width: 100%;
+        flex-direction: row;
+    }
+    .score_tempo {
+        padding: 15px;
+        border-radius: 10%;
+        margin-bottom: 30px;
+    }
+    .score_tempo p,
+    span {
+        font-size: x-large;
+    }
+    .btn_play {
+        flex-direction: column;
+        height: 132px;
+    }
+    .btn_play button {
+        width: auto;
+        height: auto;
+        font-size: x-large;
+    }
+    /*vue-contact .html*/
+    .contact {
+        flex-direction: column;
+    }
+    .gauche_contact {
+        width: 100%;
+        height: 120px;
+        ;
+    }
+    .droite_contact {
+        width: 100%;
+    }
+    .droite_contact h2 {
+        font-size: x-large;
+    }
+    .container_contact {
+        width: auto;
+    }
+    .name_card {
+        flex-direction: column;
+        width: auto;
+    }
+    input#email,
+    input#sujet {
+        width: auto;
+        height: auto;
     }
 }

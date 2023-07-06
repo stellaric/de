@@ -1,170 +1,118 @@
-style.css /_____version 0____/
+//variable 
+var currentPlayer = 1;
+var diceNumber;
+var diceElement;
+var player1Element;
+var player2Element;
+var roundScoreElement
+    // Fonction de lancer de dé
+function launchDice() {
+    // Génération d'un nombre aléatoire entre 1 et 6
+    diceNumber = Math.floor(Math.random() * 6) + 1;
+
+    // Sélection de l'élément d'affichage du dé
+    diceElement = document.querySelector('.score img');
+
+    // Mise à jour de l'image du dé en fonction du résultat
+    diceElement.src = '../src/img/dice/de' + diceNumber + '.png';
+
+    // Si le résultat est différent de 1, on met à jour le score temporaire du joueur actif
+    if (diceNumber !== 1) {
+        updateRoundScore(diceNumber);
+    } else {
+        // Sinon, on passe au joueur suivant
+        switchPlayer();
+    }
+    // Ajouter la classe "bounce-animation" au dé
+    var diceSound = document.getElementById("diceSound");
+    diceSound.play();
+    // Arrêter le son après 1 seconde
+    setTimeout(function() {
+        diceSound.pause();
+    }, 1000);
 
 
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-html {
-    scroll-behavior: smooth;
+    diceElement = document.getElementById("dice");
+    diceElement.classList.add("bounce-animation");
+
+    // Supprimer la classe "bounce-animation" après un court délai
+    setTimeout(function() {
+        diceElement.classList.remove("bounce-animation");
+    }, 500); // Durée de l'animation en millisecondes
+
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-    ;
+// Fonction de mise à jour du score temporaire du joueur actif
+function updateRoundScore(diceNumber) {
+    // Sélection de l'élément d'affichage du score temporaire du joueur actif
+    roundScoreElement = document.querySelector('.joueur_un.active #roundScore1');
+
+    // Récupération du score temporaire actuel du joueur actif
+    var roundScore = parseInt(roundScoreElement.textContent);
+
+    // Mise à jour du score temporaire en ajoutant le résultat du lancer de dé
+    roundScore += diceNumber;
+
+    // Mise à jour de l'affichage du score temporaire
+    roundScoreElement.textContent = roundScore;
 }
 
+// Fonction  joueur suivant
+function switchPlayer() {
+    // Sélection des éléments des joueurs
+    player1Element = document.querySelector('.joueur_un');
+    player2Element = document.querySelector('.joueur_deux');
+    roundScoreElement = document.getElementById("roundScore" + currentPlayer);
 
-/*header*/
+    player1Element.classList.toggle("active");
+    player2Element.classList.toggle("active");
 
-.header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 150px;
-}
+    roundScore = 0;
+    roundScoreElement.textContent = roundScore;
 
-
-/*main*/
-
-.main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.main h1 {
-    text-align: center;
-    font-weight: 200;
-    font-size: 8vh;
-    font-family: 'Monoton', cursive;
-    color: rgba(255, 255, 255, 0.705);
-    text-shadow: 0 0 54px rgba(202, 228, 225, 1);
-}
-
-#resultat {
-    text-align: center;
-    font-weight: 200;
-    font-size: 8vh;
-    font-family: 'Monoton', cursive;
-    color: #c6e2ff;
-    text-shadow: 0 0 54px rgba(202, 228, 225, 1);
-    height: 50px;
-}
-
-.contenu_main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(43, 41, 41, 0.623);
-}
-
-.contenu_main p {
-    text-align: center;
-    font-weight: 200;
-    font-size: 5vh;
-    font-family: 'Monoton', cursive;
-    color: #c6e2ff;
-    width: 550px;
-    text-shadow: 0 0 54px rgba(202, 228, 225, 1);
-}
-
-.plateau {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border-top: 1px solid white;
-    height: 500px
-}
-
-#joueur1 {
-    border-right: 1px solid white;
-    background-color: rgb(17, 62, 102);
-}
-
-#joueur1 p {
-    text-align: center;
-    font-weight: 200;
-    font-size: 5vh;
-    font-family: 'Monoton', cursive;
-    color: #c6e2ff;
-    width: 550px;
-    text-shadow: 0 0 54px rgba(202, 228, 225, 1);
-}
-
-#joueur2 {
-    background-color: rgb(145, 30, 106);
-}
-
-#btn_launch {
-    padding: 30px;
-    background-color: black;
-    border: 2px solid #dee6e2;
-    color: #dae4df;
-    font-size: 4vh;
-    font-family: 'Monoton', cursive;
-    box-shadow: 0px 0px 9px 1px white;
-}
-
-#btn_launch:hover {
-    box-shadow: 0px 0px 10px 1px white;
+    if (currentPlayer === 1) {
+        currentPlayer = 2;
+    } else {
+        currentPlayer = 1;
+    }
 }
 
 
-index.html /_____version 0____/
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Jeu de Dé</title>
-</head>
 
-<body>
-    <header>
-        <div class="header"></div>
-    </header>
-    <main>
-        <div class="main">
-            <div class="titre_main">
-                <h1>Jeu de Dé</h1>
-            </div>
-            <div class="contenu_main">
-                <p>
-                    Le dé affiche :
-                </p>
-                <br>
 
-                <p id="resultat"></p>
 
-                <div class="plateau">
 
-                    <div id="joueur1">
-                        <p>
-                            Joueur 1
-                        </p>
-                    </div>
-                    <div id="joueur2">
-                        <p>
-                            Joueur 2
-                        </p>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <button id="btn_launch" type="submit" onclick="launch()">Lancer le dé</button>
-            </div>
-        </div>
-    </main>
-    <footer></footer>
-    <script src="assets/js/script.js"></script>
-</body>
 
-</html>
+// vue.contact
+function validateForm(event) {
+    event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
+
+    // Récupérer les valeurs des champs du formulaire
+    const nom = document.getElementById('nom').value;
+    const prenom = document.getElementById('prenom').value;
+    const email = document.getElementById('email').value;
+    const sujet = document.getElementById('sujet').value;
+    const message = document.getElementById('message').value;
+
+    // Expression régulière pour vérifier le format de l'email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Vérifier les valeurs des champs avec les regex
+    if (nom.trim() === '' || prenom.trim() === '' || email.trim() === '' || sujet.trim() === '' || message.trim() === '') {
+        alert('Veuillez remplir tous les champs du formulaire.');
+    } else if (!emailRegex.test(email)) {
+        alert('Veuillez entrer une adresse email valide.');
+    } else {
+        // Si toutes les validations sont réussies, vous pouvez envoyer les données du formulaire
+        alert('Formulaire envoyé avec succès!');
+        document.getElementById('contactForm').reset(); // Réinitialiser le formulaire après l'envoi
+    }
+}
+
+
+// Ajout des écouteurs d'événements aux boutons
+document.getElementById('rollBtn').addEventListener('click', launchDice);
+document.getElementById('holdBtn').addEventListener('click', switchPlayer);

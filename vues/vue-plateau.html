@@ -37,62 +37,66 @@
 
     <main>
 
+        <div class="main_plateau">
 
+            <section>
+                <div class="section_plateau">
+                    <div class="joueur_un active" id="player1">
 
-        <section>
-            <div class="section_plateau">
-                <div class="joueur_un active" id="player1">
-
-                    <div class="profil">
-                        <span class="iconify" data-icon="iconamoon:profile-fill" id="icon_profil"></span>
-                        <p>Joueur 1</p>
-                    </div>
-                    <div class="score_tempo">
-                        <p>ROUND :</p>
-                        <span id="roundScore1">0</span>
-                    </div>
-
-                </div>
-
-
-                <div class="score">
-                    <div class="score_globale">
-                        <h2>Score globale </h2>
-                        <div class="scr-gbl_joueur">
-                            <span id="globalScore1">0</span>
-                            <span id="globalScore2">0</span>
+                        <div class="profil">
+                            <span class="iconify" data-icon="iconamoon:profile-fill" id="icon_profil"></span>
+                            <p>Joueur 1</p>
+                        </div>
+                        <div class="score_tempo">
+                            <p>ROUND </p>
+                            <span id="roundScore1">0</span>
                         </div>
 
-                        <img src="../src/img/dice/de1.png" alt="" srcset="" class="dice">
+                    </div>
+
+
+                    <div class="score">
+                        <div class="score_globale">
+                            <h2>Score </h2>
+                            <div class="scr-gbl_joueur">
+                                <span id="globalScore1">0</span>
+                                <span id="globalScore2">0</span>
+                            </div>
+
+                            <img src="../src/img/dice/de1.png" alt="" srcset="" id="dice">
+                        </div>
+                    </div>
+
+                    <div class="joueur_deux " id="player2">
+                        <div class="profil">
+                            <span class="iconify" data-icon="iconamoon:profile-fill" id="icon_profil"></span>
+                            <p>Joueur 2</p>
+                        </div>
+                        <div class="score_tempo">
+                            <p>ROUND </p>
+                            <span id="roundScore2">0</span>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="joueur_deux " id="player2">
-                    <div class="profil">
-                        <span class="iconify" data-icon="iconamoon:profile-fill" id="icon_profil"></span>
-                        <p>Joueur 2</p>
-                    </div>
-                    <div class="score_tempo">
-                        <p>ROUND :</p>
-                        <span id="roundScore2">0</span>
-                    </div>
+
+            <section>
+                <div class="btn_play">
+                    <button type="submit" id="rollBtn">Roll <span class="iconify" data-icon="ion:dice" style="color: white; font-size: 45px;margin-bottom: -7px;"></span> </button>
+                    <audio id="diceSound" src="../src/son/son_dice.mp3"></audio>
+
+                    <button type="submit" id="holdBtn"> Hold <span class="iconify" data-icon="octicon:smiley-24" style="color: white; font-size: 45px;margin-bottom: -7px;"></span> </button>
+
+
                 </div>
-            </div>
-        </section>
-
-
-        <section>
-            <div class="btn_play">
-                <button type="submit" id="rollBtn" onclick="launchDice()">Lancer <span class="iconify" data-icon="ion:dice" style="color: white; font-size: 45px;margin-bottom: -7px;"></span> </button>
-                <button type="submit" id="holdBtn"> À ton tour ! <span class="iconify" data-icon="octicon:smiley-24" style="color: white; font-size: 45px;margin-bottom: -7px;"></span> </button>
-                <button id="newGameBtn" style="display: none;">New Game</button>
-
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <p> Copyright by Stella </p>
+        <!-- Pied de page -->
+        <p>© 2023 Stella. Tous droits réservés.</p>
     </footer>
 
 

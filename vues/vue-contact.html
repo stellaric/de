@@ -12,22 +12,25 @@
 
 <body>
     <header>
+        <!-- En-tête -->
         <div class="header">
             <div class="floating-container">
                 <div class="floating-button">+</div>
                 <div class="element-container">
 
-                    <a href="google.com"> <span class="float-element tooltip-left">
-                    <i class="material-icons">phone
-                    </i></a>
-                  </span>
+                    <a href="../index.html">
+                        <span class="float-element tooltip-left">
+                            <i class="material-icons">home</i>
+                        </span>
+                    </a>
+                    <a href="vue-plateau.html">
                         <span class="float-element">
-                    <i class="material-icons">email
-              </i>
-                  </span>
-                        <span class="float-element">
-                    <i class="material-icons">chat</i>
-                  </span>
+                        <i class="material-icons">casino</i>
+                    </span>
+                    </a>
+                    <span class="float-element">
+                        <i class="material-icons">chat</i>
+                    </span>
                 </div>
             </div>
         </div>
@@ -35,23 +38,29 @@
 
 
     <main>
+        <!-- Contenu principal -->
         <section>
             <div class="contact">
-                <div class="gauche"> </div>
-                <div class="droite">
+                <div class="gauche_contact">
+                    <!-- Partie gauche du formulaire -->
+                    <video id="background-video" autoplay loop muted>
+                        <source src="../src/video/fd_bienvenue.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="droite_contact">
+                    <!-- Partie droite du formulaire -->
                     <h2>Nous Contacter</h2>
                     <form id="contactForm" onsubmit="validateForm(event)">
 
                         <div class="container_contact">
-                            <p>Besoin d’aide ? Vous vous voulez nous aider à améliorer notre site ? N’hésiter pas à nous envoyer un message </p>
-
+                            <p>Besoin d’aide ? Vous vous voulez nous aider à améliorer notre site ? N’hésitez pas à nous envoyer un message.</p>
 
                             <div class="name_card">
                                 <label for="nom">Nom :</label>
                                 <input type="text" id="nom" name="nom" required>
 
                                 <label for="prenom">Prénom :</label>
-                                <input type="text" id="nom" name="nom" required>
+                                <input type="text" id="prenom" name="prenom" required>
                             </div>
 
                             <div class="content_card">
@@ -65,19 +74,24 @@
                                 <textarea id="message" name="message" required></textarea>
                             </div>
 
+                        </div>
+
                     </form>
 
-                    </div>
                     <br>
                     <button type="submit">Envoyer</button>
                 </div>
 
+            </div>
         </section>
     </main>
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
     <footer>
-        <p> Copyright by Stella </p>
+        <!-- Pied de page -->
+        <p>© 2023 Stella. Tous droits réservés.</p>
     </footer>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 
 </html>
