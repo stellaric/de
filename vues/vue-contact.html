@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="../../src/img/logo_dice.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Jeu de Dé</title>
 </head>
@@ -50,7 +51,7 @@
                 <div class="droite_contact">
                     <!-- Partie droite du formulaire -->
                     <h2>Nous Contacter</h2>
-                    <form id="contactForm" onsubmit="validateForm(event)">
+                    <form id="contactForm" onsubmit=" return validateForm(event)">
 
                         <div class="container_contact">
                             <p>Besoin d’aide ? Vous vous voulez nous aider à améliorer notre site ? N’hésitez pas à nous envoyer un message.</p>
@@ -73,13 +74,14 @@
                                 <label for="message">Message :</label>
                                 <textarea id="message" name="message" required></textarea>
                             </div>
-
+                            <br>
+                            <button type="submit">Envoyer</button>
                         </div>
 
                     </form>
 
                     <br>
-                    <button type="submit">Envoyer</button>
+
                 </div>
 
             </div>
