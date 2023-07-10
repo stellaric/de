@@ -218,6 +218,13 @@ video#background-video {
     font-family: Montserrat, sans-serif;
 }
 
+.droite a {
+    color: rgb(75, 188, 223);
+    font-size: x-large;
+    text-decoration: none;
+    text-shadow: 0 0 4px rgb(75, 188, 223);
+}
+
 
 /**/
 
@@ -628,7 +635,7 @@ label {
     footer p {
         text-align: center;
         ;
-        font-size: x-large;
+        font-size: medium;
     }
     /*index.html (accueil)*/
     .section_regle {
