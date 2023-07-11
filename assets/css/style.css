@@ -7,6 +7,10 @@ html {
     cursor: url('../../src/img/icon/cursor.png'), auto;
 }
 
+#mydDiv {
+    display: none;
+}
+
 body {
     margin: 0;
     padding: 0;

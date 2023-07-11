@@ -8,10 +8,11 @@ var winSound;
 var diceNumber;
 var diceElement;
 var diceSound;
+
 // Fonction de lancer de dé
 function launchDice() {
-    diceNumber = Math.floor(Math.random() * 6) + 1; // Génération d'un nombre aléatoire entre 1 et 6
-    diceElement = document.querySelector('.score img'); // Sélection de l'élément d'affichage du dé
+    diceNumber = Math.floor(Math.random() * 6) + 1;
+    diceElement = document.querySelector('.score img');
     diceElement.src = '../src/img/dice/de' + diceNumber + '.png'; // Mise à jour de l'image du dé en fonction du résultat
 
     if (diceNumber !== 1) {
@@ -23,16 +24,16 @@ function launchDice() {
         switchPlayer(); // Passage au joueur suivant
     }
     // Jouer le son du dé
-    diceSound = new Audio('../../src/son/son_dice.mp3');
+    diceSound = new Audio('../src/son/son_dice.mp3');
     diceSound.play();
 
     // Ajouter la classe "bounce-animation" au dé
     diceElement.classList.add('bounce-animation');
 
-    // Supprimer la classe "bounce-animation" après un court délai
+    // Supprimer la classe "bounce-animation" a
     setTimeout(function() {
         diceElement.classList.remove('bounce-animation');
-    }, 500); // Durée de l'animation en millisecondes
+    }, 500);
 }
 
 // Fonction pour passer au joueur suivant
@@ -51,7 +52,7 @@ function switchPlayer() {
     document.getElementById('player2').classList.toggle('active');
 
     // Jouer le son lorsque les joueurs changent
-    var switchSound = new Audio('../../../src/son/son_hold.mp3');
+    var switchSound = new Audio('../src/son/son_hold.mp3');
     switchSound.play();
 }
 
@@ -131,7 +132,7 @@ document.getElementById('newGameBtn').addEventListener('click', startNewGame);
 document.getElementById('rollBtn').addEventListener('click', launchDice);
 document.getElementById('holdBtn').addEventListener('click', hold);
 
-// formulaire regex
+/*____________________________REGEX__________________________________________*/
 
 function validateForm(event) {
     event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
@@ -157,4 +158,17 @@ function validateForm(event) {
         // Réinitialisation du formulaire
         document.getElementById("contactForm").reset();
     }
+}
+/*____________________________LOADING__________________________________________*/
+//declaration de la variable
+var load;
+//temps qui s'écoule de  la page 
+function loader() {
+    load = setTimeout(showPage, 3000);
+}
+//affiche le contenu de la page 
+function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("myDiv").style.display = "block";
+    document.getElementsByClassName("footer").style.display = "block";
 }
